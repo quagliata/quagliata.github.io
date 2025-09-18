@@ -1,1 +1,25 @@
+title: "Il mio blog"
+description: "Case studies, note e appunti"
+url: "https://TUO_USER.github.io"
+baseurl: "" # lascia vuoto per user/organization site
 
+# Abilita plugin supportati da GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Sass/SCSS
+sass:
+  style: compressed
+
+# Collezioni post
+collections:
+  posts:
+    output: true
+
+# Dati di tema
+theme_settings:
+  accent: "#6EA8FF"
+  glass_light: "rgba(255,255,255,0.55)"
+  glass_dark: "rgba(20,20,22,0.55)" # nero soft
+  blur: "20px"
