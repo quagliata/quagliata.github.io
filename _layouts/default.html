@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title | default: site.title }}</title>
+    {%- seo -%}
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+    <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
+  </head>
+  <body>
+    {% include header.html %}
+
+    <main class="container">
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <script>
+      // Theme: usa preferenze OS + localStorage
+      (function(){
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        function applyTheme(t){ root.setAttribute('data-theme', t); }
+
+        applyTheme(saved ? saved : (prefersDark ? 'dark' : 'light'));
+
+        window.toggleTheme = function(){
+          const t = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+          applyTheme(t);
+          localStorage.setItem('theme', t);
+        }
+      })();
+    </script>
+  </body>
+</html>
