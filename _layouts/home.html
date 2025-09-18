@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>Case Studies</h1>
+  <p>Morbi tristique venenatis dolor ac eleifend. Proin urna urna, volutpat at pulvinar ut, feugiat.</p>
+  <div class="hero-art"></div>
+</section>
+
+<section class="grid">
+  {%- for post in site.posts -%}
+    <article class="card glass">
+      <a href="{{ post.url | relative_url }}" class="cover-link">
+        {%- if post.cover -%}
+          <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}" class="cover">
+        {%- else -%}
+          <div class="cover placeholder"></div>
+        {%- endif -%}
+      </a>
+      <div class="card-body">
+        <h2 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p class="card-meta">{{ post.date | date: "%d %b %Y" }}</p>
+        <p class="card-desc">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+      </div>
+    </article>
+  {%- endfor -%}
+</section>
